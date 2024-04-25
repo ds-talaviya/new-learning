@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+
+.menu {
+  position: sticky;
+  top: 0;
+  height: calc(100vh);
+  background-color: #eff6ff;
+}
+
+.menu button {
+  margin: 5px 0 5px 0;
+}
+
+.header {
+  background-color: #eff6ff;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  color: #074da3;
+  span {
+    cursor: pointer;
+  }
+  font-weight: 500 !important;
+}
