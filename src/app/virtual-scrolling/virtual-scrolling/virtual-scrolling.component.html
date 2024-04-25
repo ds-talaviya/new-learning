@@ -1,0 +1,23 @@
+<div class="header">
+    <h4> Virtual Scrolling
+        <span title="in tradination way: it takes time because all items are loaded before the screen is rendered,
+             means if we have 2,00,000 data then it prepare before screen render, so it may make screen hang...
+            for better understanding you can refresh page and check page loading time for both case,
+            also you can check inspect how many data loads">
+            ℹ️
+        </span>
+    </h4>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div *ngFor="let item of items">
+            {{item}}
+        </div>
+    </div>
+    <div class="col-6">
+        <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
+            <div *cdkVirtualFor="let item of items" class="item">{{item}}</div>
+        </cdk-virtual-scroll-viewport>
+    </div>
+</div>
