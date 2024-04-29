@@ -23,3 +23,16 @@
   }
   font-weight: 500 !important;
 }
+
+.sub-header {
+  background-color: #e3e3e3;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  margin: 5px 0 5px 0;
+  color: black;
+  span {
+    cursor: pointer;
+  }
+  font-weight: 500 !important;
+}

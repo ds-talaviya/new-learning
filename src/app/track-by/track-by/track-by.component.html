@@ -1,1 +1,20 @@
-<p>track-by works!</p>
+<div class="header">
+    <h4> Track-By
+        <span
+            title="by using track by if we have same data to render then we don't need to render again as we already rendered them...">
+            ℹ️
+        </span>
+    </h4>
+</div>
+<div class="row">
+    <div class="col-6">
+        <h6 class="sub-header">Normal Way</h6>
+        <p *ngFor="let user of users"> {{user.name}} </p>
+        <button type="button" class="btn btn-primary" (click)="assignSameData()">Assign same Data</button>
+    </div>
+    <div class="col-6">
+        <h6 class="sub-header">Track By</h6>
+        <p *ngFor="let user of users;trackBy:trackById"> {{user.name}} </p>
+        <button type="button" class="btn btn-primary" (click)="assignSameData()">Assign same Data</button>
+    </div>
+</div>
