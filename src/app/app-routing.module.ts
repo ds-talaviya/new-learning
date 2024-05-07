@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'track-by',
     loadChildren: () => import('./track-by/track-by.module').then(m => m.TrackByModule)
   },
+  {
+    path: 'graphs',
+    loadChildren: () => import('./graphs/graphs.module').then(m => m.GraphsModule)
+  },
 ];
 
 @NgModule({
