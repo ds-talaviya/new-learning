@@ -1,0 +1,23 @@
+d3-org-chart(refer npm site, other demo has old code implementation)
+https://www.npmjs.com/package/d3-org-chart?activeTab=readme
+https://stackblitz.com/edit/angular-ivy-gneris?file=package.json
+
+ERROR:      jsonp chunk loading:77 ERROR TypeError: Cannot read properties of null (reading 'getBoundingClientRect')
+SOLUTION:   you forgot this line <div class="chart-container" style="height: 1200px; background-color: white"></div> 
+            OR  use only above line in html page, remove all other codes
+
+ERROR:      Error: no root : 
+SOLUTION    you have to pass array in .data(data)
+
+ERROR:      main.ts:21 ERROR TypeError: linkUpdate.transition is not a function
+SOLUTION:   "d3-selection": "3", use this pacakge and version is 3 for angular 12.2.16
+
+
+for angular 12 in crm buildesk
+dep:   
+""d3"": ""7"", ""d3-org-chart"": ""3"", ""d3-selection"": ""3"",
+dev dep : 
+""@types/d3"": ""^7.4.3"",""@types/d3-org-chart"": ""^3.1.2"","
+
+
+
