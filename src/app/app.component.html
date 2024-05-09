@@ -1,18 +1,9 @@
-<div class="container">
-    <div class="row">
-        <div class="col-3 menu">
-            <button type="button" class="btn btn-dark" [routerLink]="['/virtual-scrolling']">
-                Virtual Scrolling
-            </button>
-            <button type="button" class="btn btn-dark" [routerLink]="['/track-by']">
-                Trackby
-            </button>
-            <button type="button" class="btn btn-dark" [routerLink]="['/graphs']">
-                Graphs
-            </button>
-        </div>
-        <div class="col-9">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+<div class="sidebar">
+    <a [routerLink]="['/virtual-scrolling']">Virtual Scrolling</a>
+    <a [routerLink]="['/track-by']">Trackby</a>
+    <a [routerLink]="['/graphs']">Graphs</a>
+</div>
+
+<div class="content">
+    <router-outlet></router-outlet>
 </div>
