@@ -1,1 +1,72 @@
-<div class="chart-container" style="height: 1200px; background-color: white"></div>
+<div class="row">
+    <div class="col-12">
+        <div class="header">
+            <h4> D3 Org Chart
+                <span
+                    title="CRM Buildesk implemented, refer txt file in code, also check excel for more details and bugs">
+                    ℹ️
+                </span>
+            </h4>
+        </div>
+    </div>
+</div>
+<div class="row my-2">
+    <div class="col-3" style="height: 500px;overflow-x: auto;">
+        <input class="mb-2" type="search" placeholder="search by name" (input)="filterChart($event)"><br>
+
+        <button (click)="onChangeChartType()">{{tableChart? 'Normal Chart':'Table Chart'}}</button> <br>
+
+        <button (click)="chart.fit()">Fit to the screen</button>
+        <button (click)="chart.fullscreen()">Full screen </button> <br>
+
+        <button (click)="chart.expandAll().fit()">expandAll</button>
+        <button (click)="chart.collapseAll().fit()">collapseAll</button> <br>
+
+        <button (click)="chart.compact(false).render().fit()">Horizontal</button>
+        <button (click)="chart.compact(true).render().fit()">Compact</button> <br>
+
+        <button (click)="chart.layout('right').render().fit()">Right</button>
+        <button (click)="chart.layout('top').render().fit()">Top</button>
+        <button (click)="chart.layout('left').render().fit()">Left</button>
+        <button (click)="chart.layout('bottom').render().fit()">Bottom</button>
+
+        <button (click)="chart.exportImg()">Export Current</button>
+        <button (click)="chart.exportImg({full:true})">Export Full</button>
+        <button (click)="chart.exportSvg()">Export SVG</button>
+        <button (click)="downloadPdf(chart)">Export PDF</button> <br>
+
+        <button (click)="chart.zoomIn()">Zoom in </button>
+        <button (click)="chart.zoomOut()">Zoom Out </button>
+
+        <button (click)='chart.setExpanded("167").setCentered("167").render()'> Expand and center node to 167 </button>
+
+        <button (click)="chart.setExpanded('167',false).render()"> Collapse node with ID of 167 </button>
+
+
+        <button (click)="chart.setHighlighted('103').render()">Highlight 103</button>
+
+        <button (click)="chart.setUpToTheRootHighlighted('103').render().fit()">
+            Highlight 103 to root
+        </button>
+
+        <button (click)="chart.clearHighlighting()">clear</button>
+
+        <button (click)="chart.setCentered('134').render()">
+            Center node with ID of 134
+        </button>
+
+        <button (click)="chart.setActiveNodeCentered(false).render()">
+            Don't center active node
+        </button>
+        <button (click)="chart.setActiveNodeCentered(true).render()">
+            Center active node
+        </button>
+
+        <button (click)="chart.addNode({id:'child',parentId:'100',name:'test',_centered:true}).render()">
+            Add node to the root
+        </button>
+    </div>
+    <div class="col-9">
+        <div class="chart-container"></div>
+    </div>
+</div>

@@ -5,7 +5,7 @@ import { BasicOrgGraphComponent } from './d3-org-chart/basic-org-graph/basic-org
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'basic-org', pathMatch: 'full'
+    path: '', redirectTo: 'org', pathMatch: 'full'
   },
   {
     path: 'org', component: OrgGraphComponent

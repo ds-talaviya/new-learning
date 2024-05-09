@@ -3,6 +3,7 @@
   top: 0;
   height: calc(100vh);
   background-color: #eff6ff;
+
   button {
     display: block;
   }
@@ -18,9 +19,11 @@
   top: 0;
   padding: 5px;
   color: #074da3;
+
   span {
     cursor: pointer;
   }
+
   font-weight: 500 !important;
 }
 
@@ -31,8 +34,36 @@
   padding: 5px;
   margin: 5px 0 5px 0;
   color: black;
+
   span {
     cursor: pointer;
   }
+
   font-weight: 500 !important;
+}
+
+.my-2 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.mx-2 {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.ml-2 {
+  margin-left: 2px;
+}
+
+.mr-2 {
+  margin-right: 2px;
+}
+
+.mt-2 {
+  margin-top: 2px;
+}
+
+.mb-2 {
+  margin-bottom: 2px;
 }
