@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'graphs',
     loadChildren: () => import('./graphs/graphs.module').then(m => m.GraphsModule)
   },
+  {
+    path: 'image-compress',
+    loadChildren: () => import('./image-compress/image-compress.module').then(m => m.ImageCompressModule)
+  },
 ];
 
 @NgModule({
