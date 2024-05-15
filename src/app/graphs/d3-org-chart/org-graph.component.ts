@@ -87,7 +87,10 @@ export class OrgGraphComponent implements OnInit {
         .childrenMargin((d) => 50)
         .compactMarginBetween((d) => 35)
         .compactMarginPair((d) => 30)
-        .neightbourMargin((a, b) => 20)
+        // .neightbourMargin((a, b) => 20)
+        .onNodeClick((d: any) => {
+          this.highLightNodePath(d.data);
+        })
         .nodeContent(function (d: any, i, arr, state) {
           const color = '#FFFFFF';
           const imageDiffVert = 25 + 2;
@@ -113,6 +116,22 @@ export class OrgGraphComponent implements OnInit {
         .data(data)
         .render();
     });
+  }
+
+  // light whole path of node
+  highLightNodePath(node: any) {
+    this.chart.render().clearHighlighting();
+    this.chart.setUpToTheRootHighlighted(node.id).render();
+  }
+
+  resetChart() {
+    const data = this.chart.data();
+    data.forEach((element:any) => {
+      element._centered = false;
+      element._expanded = false;
+      element._highlighted = false;
+    });
+    this.chart.render().clearHighlighting();
   }
 
   createTableChart() {
