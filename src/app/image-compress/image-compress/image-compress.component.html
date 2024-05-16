@@ -1,4 +1,8 @@
-<div class="header">
-    <h4> Image Compress
-    </h4>
+<div>
+    <!-- <input #filepicker type="file"
+        accept="application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/pdf, image/*"
+        class="form-control" (change)="uploadFile($event)" /> -->
+    <input #filepickerMultiple type="file"
+        accept="application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/pdf, image/*"
+        class="form-control" multiple (change)="uploadFile($event)" />
 </div>

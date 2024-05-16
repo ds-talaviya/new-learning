@@ -1,0 +1,8 @@
+best solution by chat GPT
+https://stackblitz.com/edit/angular-compress-image?file=src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fapp.module.ts,src%2Fapp%2Fcompress-image.service.ts
+
+by library
+https://www.npmjs.com/package/ngx-image-compress?activeTab=versions
+https://stackblitz.com/edit/ngx-image-compress-2ezlgs?file=src%2Fapp%2Fapp.component.ts
+https://stackblitz.com/edit/ngx-compress-sample-3btf2c?file=app%2Fng-compress-sample.ts
+https://stackblitz.com/edit/ngx-image-compress-zwwagn?file=src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fapp.component.html
