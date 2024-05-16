@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VirtualScrollingModule } from './virtual-scrolling/virtual-scrolling.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TrackByModule } from './track-by/track-by.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { TrackByModule } from './track-by/track-by.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     VirtualScrollingModule,
-    TrackByModule
   ],
   providers: [],
   bootstrap: [AppComponent]
