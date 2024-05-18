@@ -1,0 +1,27 @@
+//  try to make primeng same as ERP table
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+::ng-deep .p-treetable .p-treetable-tbody>tr>td .p-treetable-toggler {
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+::ng-deep .p-treetable .p-treetable-thead>tr>th {
+    border-top: none !important;
+}
+
+::ng-deep .p-component {
+    font-size: inherit !important;
+}
+
+::ng-deep .pi {
+    font-size: 0.7em !important;
+}
+
+::ng-deep .p-treetable .p-treetable-tbody>tr>td {
+    border: none;
+    border-bottom: 1px dashed #e5e5e5 !important;
+}

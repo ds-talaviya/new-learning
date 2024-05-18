@@ -1,0 +1,40 @@
+<div style="text-align:left">
+    <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+        selectedItemsLabel="{0} columns selected" [style]="{ width: '20em' }" defaultLabel="Choose Columns"
+        display="chip"> </p-multiSelect>
+</div>
+<p-treeTable [value]="files" [columns]="selectedColumns" [frozenColumns]="frozenCols" frozenWidth="300px"
+    [columns]="scrollableCols" [scrollable]="true" [scrollable]="true" [resizableColumns]="true"
+    [reorderableColumns]="true" [tableStyle]="{'min-width':'50rem'}" sortMode="multiple" styleClass="p-treetable-sm">
+    <ng-template pTemplate="caption">
+
+    </ng-template>
+    <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+            <col *ngFor="let col of columns" style="width:250px" />
+        </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [ttSortableColumn]="col.field" ttResizableColumn ttReorderableColumn>
+                {{ col.header }}
+                <p-treeTableSortIcon [field]="col.field"></p-treeTableSortIcon>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData="rowData" let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns; let i = index">
+                {{ rowData[col.field] }}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="frozenbody" let-rowNode let-rowData="rowData">
+        <tr [ttRow]="rowNode">
+            <td>
+                <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                {{ rowData.name }}
+            </td>
+        </tr>
+    </ng-template>
+</p-treeTable>
