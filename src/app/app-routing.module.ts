@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'cache-clear-hard-refresh-website',
     component: CacheClearHardRefreshWebsiteComponent
   },
+  {
+    path: 'grids',
+    loadChildren: () => import('./grids/grids.module').then((m) => m.GridsModule)
+  }
 ];
 
 @NgModule({
