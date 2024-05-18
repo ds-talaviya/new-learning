@@ -17,7 +17,7 @@ export class CacheClearHardRefreshWebsiteComponent {
     }
 
     // Reload the page
-    window.location.reload(true);
+    window.location.reload();
   }
 
 }
