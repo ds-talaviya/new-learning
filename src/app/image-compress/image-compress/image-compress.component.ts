@@ -29,6 +29,11 @@ export class ImageCompressComponent {
   // chat GPT
   compressImage(file: File): Promise<File> {
     return new Promise((resolve, reject) => {
+      const maxSizeBytes = 2 * 1024 * 1024;
+      if (file.size <= maxSizeBytes) {
+        resolve(file);
+        return;
+      }
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (event: any) => {
@@ -59,17 +64,34 @@ export class ImageCompressComponent {
           canvas.height = height;
           ctx.drawImage(img, 0, 0, width, height);
 
-          canvas.toBlob(blob => {
-            if (blob) {
-              const compressedFile = new File([blob], file.name, {
-                type: file.type,
-                lastModified: Date.now()
-              });
-              resolve(compressedFile);
-            } else {
-              reject(new Error('Compression failed'));
-            }
-          }, file.type, 0.8); // Adjust the quality here (0.8 is 80% quality)
+          let quality = 0.9; // Start with a high quality
+          const step = 0.1; // Step to decrease the quality in each iteration
+
+          const compress = () => {
+            canvas.toBlob(blob => {
+              if (blob) {
+                if (blob.size <= maxSizeBytes) {
+                  // If the compressed file size is less than or equal to the target size, return it
+                  const compressedFile = new File([blob], file.name, {
+                    type: file.type,
+                    lastModified: Date.now()
+                  });
+                  resolve(compressedFile);
+                } else if (quality > step) {
+                  // If the file is still too large and we can reduce the quality further, do so
+                  quality -= step;
+                  compress();
+                } else {
+                  // If we can't reduce the quality further, return an error
+                  reject(new Error('Unable to compress the image to the exact desired size.'));
+                }
+              } else {
+                reject(new Error('Compression failed'));
+              }
+            }, file.type, quality);
+          };
+
+          compress();
         };
       };
       reader.onerror = error => reject(error);
