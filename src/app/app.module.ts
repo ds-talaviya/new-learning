@@ -3,18 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { VirtualScrollingModule } from './virtual-scrolling/virtual-scrolling.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CacheClearHardRefreshWebsiteComponent } from './cache-clear-hard-refresh-website/cache-clear-hard-refresh-website.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CacheClearHardRefreshWebsiteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    VirtualScrollingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

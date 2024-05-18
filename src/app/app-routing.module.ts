@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CacheClearHardRefreshWebsiteComponent } from './cache-clear-hard-refresh-website/cache-clear-hard-refresh-website.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'image-compress',
     loadChildren: () => import('./image-compress/image-compress.module').then(m => m.ImageCompressModule)
+  },
+  {
+    path: 'cache-clear-hard-refresh-website',
+    component: CacheClearHardRefreshWebsiteComponent
   },
 ];
 
