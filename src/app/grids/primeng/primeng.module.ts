@@ -7,6 +7,7 @@ import { TreeTableModule } from 'primeng/treetable';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SelectButtonModule } from 'primeng/selectbutton'
 import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     TreeTableModule,
     SelectButtonModule,
+    ButtonModule,
     MultiSelectModule
   ]
 })
