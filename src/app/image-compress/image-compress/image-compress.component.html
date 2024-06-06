@@ -1,3 +1,8 @@
+<div class="row mb-2">
+    <div class="col-12">
+        <button type="button" [routerLink]="['/image-compress/new']">New</button>
+    </div>
+</div>
 <div>
     <!-- <input #filepicker type="file"
         accept="application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/pdf, image/*"
@@ -6,3 +11,5 @@
         accept="application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/pdf, image/*"
         class="form-control" multiple (change)="uploadFile($event)" />
 </div>
+
+<router-outlet></router-outlet>
