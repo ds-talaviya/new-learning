@@ -1,0 +1,631 @@
+<div class="row" id="non-printable">
+    <div class="col-sm-12 col-lg-2">
+        <select name="DateMode" class="form-control" id="" (change)="setDprFilterDate()" [(ngModel)]="DateMode">
+            <option [value]="1">Today</option>
+            <option [value]="2">Yesterday</option>
+            <option [value]="3">Date-Range</option>
+        </select>
+    </div>
+    <div class="col-sm-12 col-lg-2">
+    </div>
+    <div class="col-sm-12 col-lg-2">
+    </div>
+    <div class="col-sm-12 col-lg-6 text-right">
+        <button [printTitle]="'test'" [useExistingCss]="true" printSectionId="printable" ngxPrint
+            class="btn btn-primary btn-sm btn-builddesk-outline">Print</button>
+    </div>
+</div>
+
+<div id="printable">
+    <div class="print-header">
+        <div class="row dpr">
+            <div class="col-12">
+                <img *ngIf="DprDetails.LogoUrl" [src]="DprDetails.LogoUrl" style="height:100px; width:200px">
+                <h3 *ngIf="!DprDetails.LogoUrl && !!DprDetails.Project">{{DprDetails.Project | titlecase}}</h3>
+                <p class="text-muted">{{DprDetails.Address}}
+                    <br>
+                    Contact: {{DprDetails.Contact}} | Email: {{DprDetails.Email}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="print-content">
+        <div class="row dpr">
+            <div class="col-12">
+                <h5 class="title text-center">
+                    DAILY REPORT
+                    <span *ngIf="DateMode !=='3'">
+                        {{ filter.StartDate ? ('(' + (filter.StartDate | date : 'dd-MM-yyyy') + ')') : ''}}
+                    </span>
+                    <span *ngIf="DateMode =='3'">
+                        {{ filter.StartDate ? ('(' + (filter.StartDate | date : 'dd-MM-yyyy') + '') : ''}}
+                        {{ filter.EndDate ? ('to ' + (filter.EndDate | date : 'dd-MM-yyyy') + ')') : ''}}
+                    </span>
+                </h5>
+            </div>
+
+            <div class="col-12">
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1">
+                                <div class="table100-nextcols">
+                                    <table class="mt-2 mb-2">
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell table-header" colspan="7">
+                                                    Materials Delivered
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell">
+                                                    #
+                                                </th>
+                                                <th class="cell">
+                                                    Resource Name
+                                                </th>
+                                                <th class="cell">
+                                                    Supplier
+                                                </th>
+                                                <th class="cell">
+                                                    Challan No.
+                                                </th>
+                                                <th class="cell">
+                                                    Date
+                                                </th>
+                                                <th class="cell-right">
+                                                    Rate
+                                                </th>
+                                                <th class="cell-right">
+                                                    Quantity
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody *ngIf="!!DeliveredMaterial.length">
+                                            <tr class="row" *ngFor="let r of DeliveredMaterial;let i=index">
+                                                <td class="cell" data-title="Id">
+                                                    {{i+1}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Product" [title]="r.MaterialName">
+                                                    {{r.MaterialName | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Supplier" [title]="r.Supplier">
+                                                    {{r.Supplier | titlecase}}
+                                                </td>
+                                                <td class="cell max-100" data-title="Challan">
+                                                    {{r.Challan}}
+                                                </td>
+                                                <td class="cell max-100" data-title="DateInLong">
+                                                    {{r.DateInLong | date : 'dd-MM-yyyy'}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="Rate">
+                                                    {{(r.Rate)}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="Quantity">
+                                                    {{(r.Quantity)}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="!DeliveredMaterial.length">
+                                            <tr class="row">
+                                                <td class="cell text-center" colspan="7">
+                                                    No Materials Delivered Details Found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1">
+                                <div class="table100-nextcols">
+                                    <table class="mt-2 mb-2">
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell table-header" colspan="6">
+                                                    Labour Details
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell">
+                                                    #
+                                                </th>
+                                                <th class="cell">
+                                                    Resource Name
+                                                </th>
+                                                <th class="cell">
+                                                    Supplier
+                                                </th>
+                                                <th class="cell-right">
+                                                    Quantity
+                                                </th>
+                                                <th class="cell-right">
+                                                    Total
+                                                </th>
+                                                <th class="cell">
+                                                    Description
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody *ngIf="!!LabourDetails.length">
+                                            <tr class="row" *ngFor="let r of LabourDetails;let i=index">
+                                                <td class="cell" data-title="Id">
+                                                    {{i+1}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Name" [title]="r.Name">
+                                                    {{r.Name | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Supplier" [title]="r.Supplier">
+                                                    {{r.Supplier | titlecase}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="Quantity">
+                                                    {{(r.Quantity)}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="Total">
+                                                    {{(r.Total)}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Description"
+                                                    [title]="r.Description">
+                                                    {{r.Description}}
+                                                </td>
+                                            </tr>
+                                            <tr class="row">
+                                                <td class="cell" data-title="Id" colspan="2">
+                                                </td>
+                                                <td class="cell">
+                                                    <strong> Total </strong>
+                                                </td>
+                                                <td class="cell-right max-100" data-title="QUANTITY">
+                                                    <strong> {{(totalLabourQuantity)}}</strong>
+                                                </td>
+                                                <td class="cell" data-title="Id" colspan="2">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="!LabourDetails.length">
+                                            <tr class="row">
+                                                <td class="cell text-center" colspan="6">
+                                                    No Labour Details Found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1">
+                                <div class="table100-nextcols">
+                                    <table class="mt-2 mb-2">
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell table-header" colspan="5">
+                                                    Equipment Rentals
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell">
+                                                    #
+                                                </th>
+                                                <th class="cell">
+                                                    Resource Name
+                                                </th>
+                                                <th class="cell">
+                                                    Supplier
+                                                </th>
+                                                <th class="cell-right">
+                                                    Duration
+                                                </th>
+                                                <th class="cell">
+                                                    Description
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody *ngIf="!!EquipmentDetails.length">
+                                            <tr class="row" *ngFor="let r of EquipmentDetails;let i=index">
+                                                <td class="cell" data-title="Id">
+                                                    {{i+1}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Name" [title]="r.Name">
+                                                    {{r.Name | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Supplier" [title]="r.Supplier">
+                                                    {{r.Supplier | titlecase}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="Duration">
+                                                    {{(r.Duration)}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Description"
+                                                    [title]="r.Description">
+                                                    {{r.Description}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="!EquipmentDetails.length">
+                                            <tr class="row">
+                                                <td class="cell text-center" colspan="5">
+                                                    No Equipment Rentals Details Found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1">
+                                <div class="table100-nextcols">
+                                    <table class="mt-2 mb-2">
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell table-header" colspan="6">
+                                                    Materials Used
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell">
+                                                    #
+                                                </th>
+                                                <th class="cell">
+                                                    Material
+                                                </th>
+                                                <th class="cell">
+                                                    Milestone
+                                                </th>
+                                                <th class="cell">
+                                                    Task
+                                                </th>
+                                                <th class="cell">
+                                                    Subtask
+                                                </th>
+                                                <th class="cell-right">
+                                                    Quantity
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody *ngIf="!!MaterialConsumptionDetails.length">
+                                            <tr class="row" *ngFor="let r of MaterialConsumptionDetails;let i=index">
+                                                <td class="cell" data-title="Id">
+                                                    {{i+1}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Material" [title]="r.Material">
+                                                    {{r.Material | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Milestone" [title]="r.Milestone">
+                                                    {{r.Milestone | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Task" [title]="r.Task">
+                                                    {{r.Task | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="SubTask" [title]="r.SubTask">
+                                                    {{r.SubTask | titlecase}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="Quantity">
+                                                    {{(r.Quantity)}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="!MaterialConsumptionDetails.length">
+                                            <tr class="row">
+                                                <td class="cell text-center" colspan="6">
+                                                    No Materials Used Details Found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1">
+                                <div class="table100-nextcols">
+                                    <table class="mt-2 mb-2">
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell table-header" colspan="6">
+                                                    Inventory Report
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell">
+                                                    #
+                                                </th>
+                                                <th class="cell">
+                                                    Resource Name
+                                                </th>
+                                                <th class="cell-right">
+                                                    Inventory Before
+                                                </th>
+                                                <th class="cell-right">
+                                                    Material Issued
+                                                </th>
+                                                <th class="cell-right">
+                                                    Material Delivered
+                                                </th>
+                                                <th class="cell-right">
+                                                    Inventory After
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody *ngIf="!!InventoryDetails.length">
+                                            <tr class="row" *ngFor="let r of InventoryDetails;let i=index">
+                                                <td class="cell" data-title="Id">
+                                                    {{i+1}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Name" [title]="r.Name">
+                                                    {{r.Name | titlecase}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="TotalStock">
+                                                    {{(r.TotalStock)}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="TotalConsumed">
+                                                    {{(r.TotalConsumed)}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="Purchased">
+                                                    {{(r.Purchased)}}
+                                                </td>
+                                                <td class="cell-right max-100" data-title="InventoryAfter">
+                                                    {{(r.InventoryAfter)}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="!InventoryDetails.length">
+                                            <tr class="row">
+                                                <td class="cell text-center" colspan="6">
+                                                    No Inventory Report Details Found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1">
+                                <div class="table100-nextcols">
+                                    <table class="mt-2 mb-2">
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell table-header" colspan="7">
+                                                    Site Task Progress
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell">
+                                                    #
+                                                </th>
+                                                <th class="cell">
+                                                    Title
+                                                </th>
+                                                <th class="cell max-100">
+                                                    Planned Completion
+                                                </th>
+                                                <th class="cell max-100">
+                                                    Expected/Actual Completion
+                                                </th>
+                                                <th class="cell-right max-100">
+                                                    Planned % Completed
+                                                </th>
+                                                <th class="cell-right max-100">
+                                                    Previous % Completed
+                                                </th>
+                                                <th class="cell-right max-100">
+                                                    Actual % Completed
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody *ngIf="!!ProjectProgressReport.length">
+                                            <tr class="row" *ngFor="let r of ProjectProgressReport;let i=index">
+                                                <td class="cell" data-title="Id">
+                                                    {{i+1}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Milestone" [title]="r.Milestone">
+                                                    {{r.Milestone | titlecase}}
+                                                </td>
+                                                <td class="cell max-100" data-title="MilestonePlannedCompletion">
+                                                    {{r.MilestonePlannedCompletion | date : 'dd-MM-yyyy'}}
+                                                </td>
+                                                <td class="cell max-100"
+                                                    data-title="MilestoneActualCompletionPercentage">
+                                                    {{r.MilestoneActualCompletionPercentage | date : 'dd-MM-yyyy'}}
+                                                </td>
+                                                <td class="cell-right max-100"
+                                                    data-title="MilestonePlannedCompletionPercentage">
+                                                    {{(r.MilestonePlannedCompletionPercentage)}}
+                                                </td>
+                                                <td class="cell-right max-100"
+                                                    data-title="MilestonePreviousCompletionPercentage">
+                                                    {{(r.MilestonePreviousCompletionPercentage)}}
+                                                </td>
+                                                <td class="cell-right max-100"
+                                                    data-title="MilestoneActualCompletionPercentage">
+                                                    {{(r.MilestoneActualCompletionPercentage)}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="!ProjectProgressReport.length">
+                                            <tr class="row">
+                                                <td class="cell text-center" colspan="7">
+                                                    No Site Task Progress Details Found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12" *ngIf="!!DprDetails?.Images?.length">
+                <div class="dpr-header">
+                    Progress Images
+                </div>
+                <div class="dpr-documents no-page-break" *ngFor="let row of DprDetails.Images; let i=index">
+                    <img [src]="row.Path" *ngIf="row.Type=='IMAGE'">
+                    <a href="{{row.Path}}" target="_blank">
+                        <i class="fa fa-5x fa-file-word-o text-primary" *ngIf="row.Type == 'DOCUMENT'"></i></a>
+                    <a href="{{row.Path}}" target="_blank">
+                        <i class="fa fa-5x fa-file-pdf-o text-danger" *ngIf="row.Type == 'PDF'"></i></a>
+                    <a href="{{row.Path}}" target="_blank">
+                        <i class="fa fa-5x fa-file-excel-o text-success" *ngIf="row.Type == 'EXCEL'"></i></a>
+                    <a href="{{row.Path}}" target="_blank">
+                        <i class="fa fa-5x fa-file" *ngIf="row.Type == 'OTHER'"></i></a>
+                    <a href="{{row.Path}}" target="_blank">
+                        <i class="fa fa-5x fa-file " *ngIf="!row.Type"></i></a>
+                    <p class="dpr-documents-description" *ngIf="!!row.Name"> {{row.Name}}</p>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1">
+                                <div class="table100-nextcols">
+                                    <table class="mt-2 mb-2">
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell table-header" colspan="8">
+                                                    Hindrance
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <thead>
+                                            <tr class="row header">
+                                                <th class="cell">
+                                                    #
+                                                </th>
+                                                <th class="cell">
+                                                    Milestone
+                                                </th>
+                                                <th class="cell">
+                                                    Task
+                                                </th>
+                                                <th class="cell">
+                                                    Subtask
+                                                </th>
+                                                <th class="cell">
+                                                    Reported Date
+                                                </th>
+                                                <th class="cell">
+                                                    Reported By
+                                                </th>
+                                                <th class="cell">
+                                                    Reason
+                                                </th>
+                                                <th class="cell">
+                                                    Current Status
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody *ngIf="!!IssueDetails.length">
+                                            <tr class="row" *ngFor="let r of IssueDetails;let i=index">
+                                                <td class="cell" data-title="Id">
+                                                    {{i+1}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Milestone" [title]="r.Milestone">
+                                                    {{r.Milestone | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Task" [title]="r.Task">
+                                                    {{r.Task | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="SubTask" [title]="r.SubTask">
+                                                    {{r.SubTask | titlecase}}
+                                                </td>
+                                                <td class="cell max-100" data-title="ReportedDate">
+                                                    {{r.ReportedDate | date : 'dd-MM-yyyy'}}
+                                                </td>
+                                                <td class="cell row_name" data-title="ReportedBy"
+                                                    [title]="r.ReportedBy">
+                                                    {{r.ReportedBy | titlecase}}
+                                                </td>
+                                                <td class="cell row_name" data-title="Description"
+                                                    [title]="r.Description">
+                                                    {{r.Description}}
+                                                </td>
+                                                <td class="cell max-100" data-title="Status">
+                                                    {{r.Status == 'IsClosed' ? 'Close' :'Open'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="!IssueDetails.length">
+                                            <tr class="row">
+                                                <td class="cell text-center" colspan="8">
+                                                    No Hindrance Details Found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+.dpr {
+    background-color: #fff !important;
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd !important;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table .table-header {
+    background-color: #00508e;
+    color: #fff;
+    text-align: center;
+}
+
+.cell-right {
+    text-align: right !important;
+}
+
+.limiter .row.header .cell {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.limiter .row.header .cell-right {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.header {
+    .table-header {
+        color: #fff !important;
+    }
+}
+
+.dpr-documents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd !important;
+    padding-top: 5px;
+    background-color: #fff !important;
+}
+
+.dpr-documents img {
+    max-width: 500px;
+    height: 300px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.dpr-documents-description {
+    white-space: pre-wrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-weight: bold !important;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.dpr-header {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    background-color: #00508e;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2;
+    font-size: 12px;
+    text-transform: uppercase !important;
+}
+
+// to hide header of pdf
+.print-header {
+    display: none;
+}
+
+@media print {
+    .limiter .wrap-table100 {
+        border-radius: 0px !important;
+    }
+
+    .no-page-break {
+        page-break-inside: avoid;
+    }
+
+    .title {
+        margin-top: 30px !important;
+    }
+
+    td {
+        overflow: visible !important;
+        white-space: normal !important;
+    }
+
+    .cell[data-title="Description"] {
+        min-width: 250px !important;
+    }
+
+    #printable {
+        background-color: #fff !important;
+    }
+
+    .print-header {
+        // to show header of pdf
+        display: block;
+        text-align: center;
+    }
+}
