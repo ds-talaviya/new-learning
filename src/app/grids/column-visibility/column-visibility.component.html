@@ -1,0 +1,32 @@
+<div>
+    <label>
+        <input type="checkbox" [(ngModel)]="leadTableAnalysis.name" />
+        Show Name Column
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" [(ngModel)]="leadTableAnalysis.age" />
+        Show Age Column
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" [(ngModel)]="leadTableAnalysis.email" />
+        Show Email Column
+    </label>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th [columnVisibility]="leadTableAnalysis.name">Name</th>
+            <th [columnVisibility]="leadTableAnalysis.age">Age</th>
+            <th [columnVisibility]="leadTableAnalysis.email">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td [columnVisibility]="leadTableAnalysis.name">{{ user.name }}</td>
+            <td [columnVisibility]="leadTableAnalysis.age">{{ user.age }}</td>
+            <td [columnVisibility]="leadTableAnalysis.email">{{ user.email }}</td>
+        </tr>
+    </tbody>
+</table>
