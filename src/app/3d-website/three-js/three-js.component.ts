@@ -8,7 +8,7 @@ import * as THREE from 'three';
 })
 export class ThreeJsComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas') private canvasRef: ElementRef;
-  
+
   // Properties
   private camera: THREE.PerspectiveCamera;
   private renderer: THREE.WebGLRenderer;
@@ -27,7 +27,7 @@ export class ThreeJsComponent implements OnInit, AfterViewInit {
   private initThreeJs(): void {
     // Scene
     this.scene = new THREE.Scene();
-    
+
     // Camera
     const fov = 75;
     const aspect = window.innerWidth / window.innerHeight;
