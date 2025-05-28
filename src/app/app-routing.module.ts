@@ -35,6 +35,10 @@ const routes: Routes = [
   {
     path: 'exports',
     loadChildren: () => import('./exports/exports.module').then((m) => m.ExportsModule)
+  },
+  {
+    path: '3d-website',
+    loadChildren: () => import('./3d-website/3d-website.module').then((m) => m._3dWebsiteModule)
   }
 ];
 
