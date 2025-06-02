@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: '3d-website',
     loadChildren: () => import('./3d-website/3d-website.module').then((m) => m._3dWebsiteModule)
+  },
+  {
+    path: 'control-value-accessor',
+    loadChildren: () => import('./control-value-accessor/control-value-accessor.module').then((m) => m.ControlValueAccessorModule)
   }
 ];
 

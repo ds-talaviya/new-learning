@@ -1,0 +1,9 @@
+<form #form="ngForm">
+    Active:
+    <app-toggle name="isActive" [(ngModel)]="isActive" [disabled]="isToggleDisabled"></app-toggle><br />
+    Value of flag: {{ isActive }}<br />
+    Form dirty: {{ form.dirty }}<br />
+    Form touched: {{ form.touched }}<br />
+    checkbox disabled: {{ isToggleDisabled }}<br />
+    <button (click)="isToggleDisabled = !isToggleDisabled">Toggle Disable</button>
+</form>
