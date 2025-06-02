@@ -43,6 +43,10 @@ const routes: Routes = [
   {
     path: 'control-value-accessor',
     loadChildren: () => import('./control-value-accessor/control-value-accessor.module').then((m) => m.ControlValueAccessorModule)
+  },
+  {
+    path: 'socket',
+    loadChildren: () => import('./socket/socket.module').then((m) => m.SocketModule)
   }
 ];
 
