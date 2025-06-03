@@ -47,6 +47,10 @@ const routes: Routes = [
   {
     path: 'socket',
     loadChildren: () => import('./socket/socket.module').then((m) => m.SocketModule)
+  },
+  {
+    path: 'dom-sanitizer',
+    loadChildren: () => import('./dom-sanitizer/dom-sanitizer.module').then((m) => m.DomSanitizerModule)
   }
 ];
 
