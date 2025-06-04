@@ -51,6 +51,10 @@ const routes: Routes = [
   {
     path: 'dom-sanitizer',
     loadChildren: () => import('./dom-sanitizer/dom-sanitizer.module').then((m) => m.DomSanitizerModule)
+  },
+  {
+    path: 'postal-channel-service',
+    loadChildren: () => import('./postal-channel-service/postal-channel-service.module').then((m) => m.PostalChannelServiceModule)
   }
 ];
 

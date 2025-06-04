@@ -9,7 +9,7 @@ import { CacheClearHardRefreshWebsiteComponent } from './cache-clear-hard-refres
 @NgModule({
   declarations: [
     AppComponent,
-    CacheClearHardRefreshWebsiteComponent,
+    CacheClearHardRefreshWebsiteComponent
   ],
   imports: [
     BrowserModule,
