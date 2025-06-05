@@ -1,3 +1,11 @@
 <div class="card">
-    <ng-content></ng-content>
+  <header>
+    <ng-content select="[title]"></ng-content>  <!-- Matches h1[title] -->
+  </header>
+  <section>
+    <ng-content select="p"></ng-content>        <!-- Matches <p> -->
+  </section>
+  <footer>
+    <ng-content select="button"></ng-content>   <!-- Matches <button> -->
+  </footer>
 </div>
