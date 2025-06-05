@@ -55,6 +55,10 @@ const routes: Routes = [
   {
     path: 'postal-channel-service',
     loadChildren: () => import('./postal-channel-service/postal-channel-service.module').then((m) => m.PostalChannelServiceModule)
+  },
+  {
+    path: 'content-projection',
+    loadChildren: () => import('./content-projection/content-projection.module').then((m) => m.ContentProjectionModule)
   }
 ];
 
