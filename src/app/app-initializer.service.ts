@@ -13,7 +13,7 @@ export class AppInitializerService {
     return new Promise((res, rej) => {
       setTimeout(() => {
         res({});
-      }, 5000);
+      }, 2000);
     })
   }
 }
