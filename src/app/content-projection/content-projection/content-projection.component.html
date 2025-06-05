@@ -1,5 +1,14 @@
+<h1> with content </h1>
+<hr>
 <app-card>
-    <h1 title>Main Title</h1>
-    <p>Content goes here.</p>
-    <button>Click me</button>
+    <ng-container #content>
+        <h4 title>Main Title</h4>
+        <p>Content goes here.</p>
+        <button>Click me</button>
+    </ng-container>
+</app-card>
+
+<h1> without content </h1>
+<hr>
+<app-card>
 </app-card>

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterContentInit, ContentChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
 
-  constructor() { }
+export class CardComponent implements AfterContentInit {
+  @ContentChild('content') content: ElementRef;
+  hasContent = false;
 
-  ngOnInit(): void {
+  ngAfterContentInit() {
+    this.hasContent = !!this.content;
   }
-
 }

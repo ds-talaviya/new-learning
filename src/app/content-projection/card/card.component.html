@@ -1,11 +1,4 @@
-<div class="card">
-  <header>
-    <ng-content select="[title]"></ng-content>  <!-- Matches h1[title] -->
-  </header>
-  <section>
-    <ng-content select="p"></ng-content>        <!-- Matches <p> -->
-  </section>
-  <footer>
-    <ng-content select="button"></ng-content>   <!-- Matches <button> -->
-  </footer>
+<ng-content></ng-content>
+<div *ngIf="!hasContent">
+    <p>Default message: No content provided.</p>
 </div>
