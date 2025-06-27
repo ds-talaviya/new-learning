@@ -59,6 +59,10 @@ const routes: Routes = [
   {
     path: 'content-projection',
     loadChildren: () => import('./content-projection/content-projection.module').then((m) => m.ContentProjectionModule)
+  },
+  {
+    path: 'firestore',
+    loadChildren: () => import('./firestore/firestore.module').then((m) => m.FirestoreModule)
   }
 ];
 

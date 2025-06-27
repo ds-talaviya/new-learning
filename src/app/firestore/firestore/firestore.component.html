@@ -1,0 +1,19 @@
+<div style="padding: 20px;">
+    <h2>Firestore CRUD Demo</h2>
+
+    <button (click)="add()">Add</button> &nbsp;
+    <button (click)="edit()">Edit</button> &nbsp;
+    <button (click)="getById()">Get By ID</button> &nbsp;
+    <button (click)="getAll()">Get All</button> &nbsp;
+    <button (click)="delete()">Delete</button> &nbsp;
+
+    <h3>Single Document ({{ docId }})</h3>
+    <pre>{{ singleData | json }}</pre>
+
+    <h3>All Documents</h3>
+    <ul>
+        <li *ngFor="let item of allData">
+            {{ item.id }} → {{ item | json }}
+        </li>
+    </ul>
+</div>
