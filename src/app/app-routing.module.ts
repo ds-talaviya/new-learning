@@ -63,6 +63,10 @@ const routes: Routes = [
   {
     path: 'firestore',
     loadChildren: () => import('./firestore/firestore.module').then((m) => m.FirestoreModule)
+  },
+  {
+    path: 'cloud-document-uploader',
+    loadChildren: () => import('./cloud-document-uploader/cloud-document-uploader.module').then((m) => m.CloudDocumentUploaderModule)
   }
 ];
 
