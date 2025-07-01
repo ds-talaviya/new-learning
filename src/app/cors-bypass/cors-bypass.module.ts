@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CORSBypassRoutingModule } from './cors-bypass-routing.module';
 import { CORSBypassComponent } from './cors-bypass/cors-bypass.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CORSBypassRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class CORSBypassModule { }
