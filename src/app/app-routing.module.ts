@@ -67,6 +67,10 @@ const routes: Routes = [
   {
     path: 'cloud-document-uploader',
     loadChildren: () => import('./cloud-document-uploader/cloud-document-uploader.module').then((m) => m.CloudDocumentUploaderModule)
+  },
+  {
+    path: 'CORS-bypass',
+    loadChildren: () => import('./cors-bypass/cors-bypass.module').then((m) => m.CORSBypassModule)
   }
 ];
 

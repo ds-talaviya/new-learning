@@ -1,0 +1,20 @@
+<div class="header">
+    <h4> CORS bypass
+        <span
+            title="suppose you have a data on other server, you want to access it in another, may it gives CORS error">
+            ℹ️
+        </span>
+    </h4>
+</div>
+
+<input type="text" [(ngModel)]="imageUrl" placeholder="Enter image URL" />
+<span title="enter your cors error image url">
+    ℹ️
+</span>
+<button (click)="getBase64()">Get Base64</button>
+
+<div *ngIf="base64Image">
+    <p>Preview:</p>
+    <img [src]="base64Image" style="max-width: 300px;" />
+    <a [href]="base64Image" download="image.png">Download Image</a>
+</div>
