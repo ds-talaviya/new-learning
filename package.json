@@ -32,6 +32,7 @@
     "d3": "^7.1.0",
     "d3-org-chart": "^3.1.1",
     "firebase": "^8.10.1",
+    "imagekitio-angular": "^1.0.2",
     "jspdf": "^2.5.1",
     "ngx-image-compress": "^7.2.2",
     "ngx-print": "^1.2.1",
