@@ -71,6 +71,10 @@ const routes: Routes = [
   {
     path: 'CORS-bypass',
     loadChildren: () => import('./cors-bypass/cors-bypass.module').then((m) => m.CORSBypassModule)
+  },
+  {
+    path: 'ollama-ai',
+    loadChildren: () => import('./ollama-ai/ollama-ai.module').then((m) => m.OllamaAiModule)
   }
 ];
 

@@ -1,0 +1,32 @@
+<div class="p-4">
+    <h2>Ollama AI</h2>
+
+    <button class="btn btn-primary" (click)="generateSummary()" [disabled]="loading">
+        {{ loading ? 'Generating...' : 'Generate Summary' }}
+    </button>
+    &nbsp;
+    <button class="btn btn-secondary" (click)="resetData()">
+        Reset
+    </button>
+    <br>
+    <div *ngIf="!summary" class="mt-3">
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Give me data" id="todo" [(ngModel)]="todo"
+                style="height: 150px"></textarea>
+            <label for="todo">What you want to do</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Give me data" id="data" [(ngModel)]="data"
+                style="height: 300px"></textarea>
+            <label for="data">Give me data</label>
+        </div>
+    </div>
+
+    <div *ngIf="summary" class="mt-3 p-3 bg-light border">
+        <h4>Summary:</h4>
+        <p>{{ summary }}</p>
+    </div>
+
+    <div *ngIf="error" class="text-danger mt-3">{{ error }}</div>
+</div>
