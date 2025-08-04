@@ -8,6 +8,7 @@ import { CacheClearHardRefreshWebsiteComponent } from './cache-clear-hard-refres
 import { AppInitializerService } from './app-initializer.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HttpClientModule } from '@angular/common/http';
 
 export function initApp(appInitializerService: AppInitializerService) {
   return () => appInitializerService.loadConfig();
@@ -34,7 +35,8 @@ const firebaseConfig = {
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule
   ],
   providers: [
     {
