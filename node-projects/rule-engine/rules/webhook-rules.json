@@ -1,0 +1,19 @@
+{
+    "webhookA": {
+        "mappings": {
+            "first_name": "name",
+            "mobile_no": "phone",
+            "dob": "birthDate"
+        },
+        "transforms": {
+            "birthDate": "date:DD-MM-YYYY"
+        }
+    },
+    "webhookB": {
+        "mappings": {
+            "fname": "name",
+            "contact": "phone",
+            "date_of_birth": "birthDate"
+        }
+    }
+}
