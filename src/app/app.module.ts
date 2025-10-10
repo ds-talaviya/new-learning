@@ -8,7 +8,8 @@ import { CacheClearHardRefreshWebsiteComponent } from './cache-clear-hard-refres
 import { AppInitializerService } from './app-initializer.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './shared/auth.interceptor';
 
 export function initApp(appInitializerService: AppInitializerService) {
   return () => appInitializerService.loadConfig();
@@ -43,6 +44,11 @@ const firebaseConfig = {
       provide: APP_INITIALIZER,
       deps: [AppInitializerService],
       useFactory: initApp,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     }
   ],
