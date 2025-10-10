@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import imageCompression from 'browser-image-compression';
+import { SupabaseService } from 'src/app/cloud-document-uploader/supabase.service';
 
 @Component({
   selector: 'app-image-compress2',
@@ -7,6 +8,8 @@ import imageCompression from 'browser-image-compression';
   styleUrls: ['./image-compress2.component.scss']
 })
 export class ImageCompress2Component {
+
+  constructor(private sb: SupabaseService) { }
 
   async handleImageUpload(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -17,7 +20,7 @@ export class ImageCompress2Component {
       const options = {
         maxSizeMB: 5,
         useWebWorker: true,
-        minSizeMB:5
+        minSizeMB: 5
       };
 
       try {
@@ -32,6 +35,11 @@ export class ImageCompress2Component {
 
   uploadToServer(file: File) {
     // Your logic to upload the file to the server
+    if (file) {
+      this.sb.uploadFile(file).then((url: any) => {
+        console.log('File available at:', url);
+      });
+    }
   }
 
 }
