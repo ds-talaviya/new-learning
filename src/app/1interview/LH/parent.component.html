@@ -1,0 +1,8 @@
+<h2>Parent Component</h2>
+<p>Parent Counter: {{ parentCounter }}</p>
+<button (click)="incrementCounter()">Increment Parent Counter</button>
+
+<hr>
+
+<!-- Child component -->
+<app-lhchild [childInput]="parentCounter"></app-lhchild>

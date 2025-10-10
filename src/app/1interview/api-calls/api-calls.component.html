@@ -1,0 +1,20 @@
+<p>api-calls works!</p>
+<button type="button" (click)="getUsers()">Refresh</button>
+<button type="button" (click)="pagination.pageNumber = pagination.pageNumber+1; getUsers()">go Next</button>
+<button type="button" (click)="pagination.pageNumber = pagination.pageNumber-1; getUsers()">go Prev</button>
+<button type="button" (click)="pagination.pageSize = pagination.pageSize + 10; getUsers()">change size</button>
+<button type="button" (click)="addUser()">Add User</button>
+<p *ngIf="loading">Loading...</p>
+<p *ngIf="error">{{error}}</p>
+
+
+<ul *ngIf="!loading && !error">
+    <li *ngFor="let user of users" style="cursor: pointer;" (click)="getUserById(user.id)">
+        {{user.id}} {{user.first_name}} {{user.last_name}}
+        <button type="button" (click)="updateUser(user)">Update User</button>
+        <button type="button" (click)="deleteUser(user)">Delete user</button>
+        <div *ngIf="!loading && !error && !!userData && userData.id === user.id">
+            <pre>{{ userData | json }}</pre>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,9 @@
+<h1>Parent</h1>
+<button type="button" (click)="name = 'abc'">Change Name</button>
+Full Name:{{fullName}}
+utilityService: {{utilityService.serviceName | async}}
+<hr>
+<app-child [name]="name" (setName)="onSetName($event)">
+    <h1>Hello</h1>
+</app-child>
+<router-outlet></router-outlet>

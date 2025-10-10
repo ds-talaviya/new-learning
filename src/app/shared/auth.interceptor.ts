@@ -22,6 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // Handle response & errors
         return next.handle(authReq).pipe(
             catchError((error: HttpErrorResponse) => {
+                console.log("🚀 ~ AuthInterceptor ~ intercept ~ error:", error)
                 if (error.status === 404) {
                     console.error('API not found (404)');
                 } else if (error.status === 0) {
@@ -29,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 } else {
                     console.error('API error:', error.message);
                 }
-                return throwError(() => error);
+                return throwError(error.error.message);
             })
         );
     }

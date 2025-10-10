@@ -1,0 +1,17 @@
+<h2>Parent Component</h2>
+<p>Counter (affects child): {{ counter }}</p>
+<p>Unrelated: {{ unrelated }}</p>
+<p *ngIf="logParentCheck()"></p>
+
+<button (click)="incrementCounter()">Increment Counter</button>
+<button (click)="incrementUnrelated()">Increment Unrelated</button>
+
+<hr>
+
+<!-- Child with Default CD -->
+<app-child-default [count]="counter"></app-child-default>
+
+<hr>
+
+<!-- Child with OnPush CD -->
+<app-child-onpush [count]="counter"></app-child-onpush>

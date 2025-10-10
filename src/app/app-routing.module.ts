@@ -75,6 +75,10 @@ const routes: Routes = [
   {
     path: 'ollama-ai',
     loadChildren: () => import('./ollama-ai/ollama-ai.module').then((m) => m.OllamaAiModule)
+  },
+  {
+    path: 'interview',
+    loadChildren: () => import('./1interview/interview.module').then((m) => m.InterviewModule)
   }
 ];
 
